@@ -1,10 +1,12 @@
 const mysql = require('mysql2/promise');
+require('dotenv').config(); // 👈 load environment variables
 
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'u167227426_orient_walls',
-  password: 'Orientwalls@122',
-  database: 'u167227426_orient_walls',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
